@@ -97,6 +97,20 @@
         "contactEmail": "muwimi@mailinator.com",
         "contactPhone": "+1 (859) 465-3082"
       }
+    },
+    {
+      "id": "c086",
+      "type": "Part-Time",
+      "title": "Clare Ochoa",
+      "description": "Iusto velit odio qui",
+      "salary": "Over $200K",
+      "location": "In atque quo aut fug",
+      "company": {
+        "name": "Hickman and Fernandez Inc",
+        "description": "Enim eius do tenetur",
+        "contactEmail": "focifot@mailinator.com",
+        "contactPhone": "+1 (468) 138-1582"
+      }
     }
   ]
 }
