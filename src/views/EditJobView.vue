@@ -31,7 +31,7 @@ const state = reactive({
 const toast = useToast();
 
 const handleSubmit = async () => {
-    const newJob = {
+    const updateJob = {
         type: form.type,
         title: form.title,
         description: form.description,
@@ -46,12 +46,12 @@ const handleSubmit = async () => {
     };
     
     try {
-        const response = await axios.post('/api/jobs', newJob)
-        toast.success('Job Added Successfully');
+        const response = await axios.put(`/api/jobs/${jobId}`, updateJob)
+        toast.success('Job Updated Successfully');
         router.push(`/jobs/${response.data.id}`);
     } catch (error) {
         console.error('Error fecting job', error)
-        toast.error('Job Was Not Added')
+        toast.error('Job Was Not Updated')
     }
 }
 
@@ -66,9 +66,9 @@ onMounted(async() => {
         form.salary = state.job.salary;
         form.location = state.job.location;
         form.company.name = state.job.company.name;
-        form.company.description = state.job.company.description
-        form.company.contactEmail = state.job.compant.contactEmail
-        form.company.contactPhone = state.job.company.contactPhone
+        form.company.description = state.job.company.description;
+        form.company.contactEmail = state.job.company.contactEmail;
+        form.company.contactPhone = state.job.company.contactPhone;
     } catch (error) {
         console.log('Error fetching job', error)
     }
