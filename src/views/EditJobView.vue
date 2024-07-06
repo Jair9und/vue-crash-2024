@@ -1,12 +1,11 @@
 <script setup>
 import router from '@/router';
-import { reactive } from 'vue';
+import { reactive, onMounted } from 'vue';
 import {useToast} from 'vue-toastification'
-import { useRoute, useRouter } from 'vue-router';
+import { useRoute } from 'vue-router';
 import axios from 'axios';
 
 const route = useRoute();
-const router = useRouter();
 
 const jobId = route.params.id;
 
@@ -56,7 +55,24 @@ const handleSubmit = async () => {
     }
 }
 
-
+onMounted(async() => {
+    try {
+        const response = await axios.get(`/api/jobs/${jobId}`);
+        state.job = response.data
+        // populate inputs
+        form.type = state.job.type;
+        form.title = state.job.title;
+        form.description = state.job.description;
+        form.salary = state.job.salary;
+        form.location = state.job.location;
+        form.company.name = state.job.company.name;
+        form.company.description = state.job.company.description
+        form.company.contactEmail = state.job.compant.contactEmail
+        form.company.contactPhone = state.job.company.contactPhone
+    } catch (error) {
+        console.log('Error fetching job', error)
+    }
+})
 </script>
 
 <template>
