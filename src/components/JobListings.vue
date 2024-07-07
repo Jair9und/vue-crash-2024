@@ -42,7 +42,7 @@ onMounted(async () => {
              </div>
 
             <!-- Show job listing when done loading -->
-            <div v-else class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div v-else class="grid grid-cols-1 md:grid-cols-4 gap-6">
                 <jobListing 
                     v-for="job in state.jobs.slice(0, limit || state.jobs.length)" 
                     :key="job.id" 
